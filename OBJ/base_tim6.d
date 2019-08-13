@@ -34,3 +34,4 @@
 ..\obj\base_tim6.o: G:\Program Files\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\base_tim6.o: ..\INCLUDE\pid.h
 ..\obj\base_tim6.o: ..\INCLUDE\lcd.h
+..\obj\base_tim6.o: ..\INCLUDE\usart_one.h

@@ -39,3 +39,4 @@
 ..\obj\main.o: ..\INCLUDE\key.h
 ..\obj\main.o: ..\INCLUDE\exti.h
 ..\obj\main.o: ..\INCLUDE\lcd.h
+..\obj\main.o: ..\INCLUDE\usart_one.h

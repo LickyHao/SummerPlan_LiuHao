@@ -37,6 +37,7 @@
 "..\obj\key.o"
 "..\obj\exti.o"
 "..\obj\lcd.o"
+"..\obj\usart_one.o"
 --strict --scatter "..\OBJ\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

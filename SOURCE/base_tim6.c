@@ -5,8 +5,11 @@
 #include"pid.h"
 #include"lcd.h"
 
+#include"usart_one.h"
+
 int encoder_number;
 extern int RealitySpeed;
+extern float really_speed_numbr; 
 float speed_show_lcd;
 //extern int count; 
 
@@ -44,6 +47,7 @@ void TIM6_IRQHandler(void)
 	static unsigned int time_1s_flag=0;
 	static unsigned int time_250ms_flag=0;
 	static unsigned char tim_10ms_flag=0;
+//	unsigned char speed_usart_show_string[60];
 	if(TIM_GetITStatus(TIM6,TIM_IT_Update)==SET)
 	{
 		time_1s_flag++;
@@ -53,7 +57,21 @@ void TIM6_IRQHandler(void)
 		if(time_1s_flag>=1000)
 		{
 			 time_1s_flag=0;
-			 printf("%.2f\n",(float)encoder_number/334);
+			really_speed_numbr=(float)encoder_number/334.0;
+			/*speed_usart_show_string[0]='s';
+			speed_usart_show_string[1]='p';
+			speed_usart_show_string[2]='e';
+			speed_usart_show_string[3]='e';
+			speed_usart_show_string[4]='d';
+			speed_usart_show_string[5]=':';
+			speed_usart_show_string[6]=((int)(really_speed_numbr/100))%10+'0';
+			speed_usart_show_string[7]=((int)(really_speed_numbr/10))%10+'0';
+			speed_usart_show_string[8]=((int)(really_speed_numbr))%10+'0';
+			speed_usart_show_string[9]='.';
+			speed_usart_show_string[10]=((int)(really_speed_numbr*10))%10+'0';
+			speed_usart_show_string[11]=((int)(really_speed_numbr*100))%10+'0';
+			usart1_send_string(speed_usart_show_string,13);*/
+			 //printf("%.2f\n",(float)encoder_number/334);
 			 speed_show_lcd=(float)encoder_number/334;
 			 out_scan();
 			  //LCD_Fill(0,0,319,479,WHITE);

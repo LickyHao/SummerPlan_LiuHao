@@ -9,13 +9,13 @@
 #include"key.h"
 #include"exti.h"
 #include"lcd.h"
-
+#include"usart_one.h"
 
 
 //int RealitySpeed;
 int count;
 int really_speed_angle;
-
+//unsigned char a[20]="123456\n\r";
 
 
 int main(void)
@@ -37,7 +37,7 @@ int main(void)
 	while(1)
 	{
 		lcd_show_PID();
-		
+		//usart1_send_string(a,10);
 		lcd_show_Speed_angle();
 		/*RealitySpeed=pid_rectify(count);
 		TIM_SetCompare1(TIM1,RealitySpeed);*/

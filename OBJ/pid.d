@@ -34,3 +34,4 @@
 ..\obj\pid.o: ..\SYSTEM\sys\sys.h
 ..\obj\pid.o: ..\INCLUDE\key.h
 ..\obj\pid.o: ..\INCLUDE\lcd.h
+..\obj\pid.o: ..\INCLUDE\usart_one.h

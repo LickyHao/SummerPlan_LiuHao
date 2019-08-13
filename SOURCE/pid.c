@@ -3,6 +3,9 @@
 #include "usart.h"
 #include"key.h"
 #include"lcd.h"
+#include"usart_one.h"
+
+
 
 float pid_change_value_numbeer;
 unsigned int speed_angle_change_value_number;
@@ -10,7 +13,7 @@ extern int really_speed_angle;
 unsigned char Kp_String[10]="Kp:";
 unsigned char Ki_String[10]="Ki:";
 unsigned char Kd_String[10]="Kd:";
-
+float really_speed_numbr; 
 
 
 typedef struct{
@@ -59,7 +62,52 @@ float pid_rectify(float SetSpeed)
 
 void out_scan(void)
 {
-	printf("             Kp=%.2f,Ki=%.2f,Kd=%.2f\n",PidParameterString.Kp,PidParameterString.Ki,PidParameterString.Kd);
+	unsigned char speed_PidParameter_usart1_show_string[200];
+	
+	speed_PidParameter_usart1_show_string[0]='s';
+	speed_PidParameter_usart1_show_string[1]='p';
+	speed_PidParameter_usart1_show_string[2]='e';
+	speed_PidParameter_usart1_show_string[3]='e';
+	speed_PidParameter_usart1_show_string[4]='d';
+	speed_PidParameter_usart1_show_string[5]=':';
+	speed_PidParameter_usart1_show_string[6]=((int)(really_speed_numbr/100))%10+'0';
+	speed_PidParameter_usart1_show_string[7]=((int)(really_speed_numbr/10))%10+'0';
+	speed_PidParameter_usart1_show_string[8]=((int)(really_speed_numbr))%10+'0';
+	speed_PidParameter_usart1_show_string[9]='.';
+	speed_PidParameter_usart1_show_string[10]=((int)(really_speed_numbr*10))%10+'0';
+	speed_PidParameter_usart1_show_string[11]=((int)(really_speed_numbr*100))%10+'0';
+	
+	speed_PidParameter_usart1_show_string[12]=' ';
+	speed_PidParameter_usart1_show_string[13]=' ';
+	speed_PidParameter_usart1_show_string[14]='k';
+	speed_PidParameter_usart1_show_string[15]='p';
+	speed_PidParameter_usart1_show_string[16]='=';
+	speed_PidParameter_usart1_show_string[17]=(int)PidParameterString.Kp+'0';
+	speed_PidParameter_usart1_show_string[18]='.';
+	speed_PidParameter_usart1_show_string[19]=((int)(PidParameterString.Kp*10))%10+'0';
+	speed_PidParameter_usart1_show_string[20]=((int)(PidParameterString.Kp*100))%10+'0';
+	speed_PidParameter_usart1_show_string[21]=' ';
+	speed_PidParameter_usart1_show_string[22]='K';
+	speed_PidParameter_usart1_show_string[23]='i';
+	speed_PidParameter_usart1_show_string[24]='=';
+	speed_PidParameter_usart1_show_string[25]=(int)PidParameterString.Ki+'0';
+	speed_PidParameter_usart1_show_string[26]='.';
+	speed_PidParameter_usart1_show_string[27]=((int)(PidParameterString.Ki*10))%10+'0';
+	speed_PidParameter_usart1_show_string[28]=((int)(PidParameterString.Ki*100))%10+'0';
+	speed_PidParameter_usart1_show_string[29]=' ';
+	speed_PidParameter_usart1_show_string[30]='K';
+	speed_PidParameter_usart1_show_string[31]='d';
+	speed_PidParameter_usart1_show_string[32]='=';
+	speed_PidParameter_usart1_show_string[33]=(int)PidParameterString.Kd+'0';
+	speed_PidParameter_usart1_show_string[34]='.';
+	speed_PidParameter_usart1_show_string[35]=((int)(PidParameterString.Kd*10))%10+'0';
+  speed_PidParameter_usart1_show_string[36]=((int)(PidParameterString.Kd*100))%10+'0';
+	speed_PidParameter_usart1_show_string[37]='\n';
+	speed_PidParameter_usart1_show_string[38]='\r';
+	usart1_send_string(speed_PidParameter_usart1_show_string,39);
+
+	
+	//printf("             Kp=%.2f,Ki=%.2f,Kd=%.2f\n",PidParameterString.Kp,PidParameterString.Ki,PidParameterString.Kd);
 }
 
 
@@ -107,7 +155,7 @@ void lcd_show_PID(void)
 	 Ki_String[5]=(int)((PidParameterString.Ki-(int)PidParameterString.Ki)*10)%10+'0';
 	 Ki_String[6]=(int)((PidParameterString.Ki-(int)PidParameterString.Ki)*100)%10+'0';
 	 Ki_String[7]='\0';
-	LCD_ShowString(0,17,100,15,16,Ki_String);
+	 LCD_ShowString(0,17,100,15,16,Ki_String);
 	
 	 Kd_String[3]=(int)PidParameterString.Kd+'0';
 	 Kd_String[4]='.';
