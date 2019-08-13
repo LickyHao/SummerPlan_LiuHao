@@ -356,7 +356,10 @@ void EXTI15_10_IRQHandler(void)
 	EXTI_ClearITPendingBit(EXTI_Line13);
 	if(GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_14)==0)
 	{
-		key14_angle_set();
+		
+		
+		key14_usart_pid_speed_angle_change();
+	//	key14_angle_set();
 	}	
 	EXTI_ClearITPendingBit(EXTI_Line14);
 	if(GPIO_ReadInputDataBit(GPIOF,GPIO_Pin_15)==0)

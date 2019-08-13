@@ -13,6 +13,17 @@ void Angle_Change(void);
 void lcd_show_PID(void);
 void lcd_show_set_speed(unsigned short int x);
 void lcd_show_really_speed(unsigned short int x);
+void usart_kp_change(void);
+void usart_ki_change(void);
+void usart_kd_change(void);
+void usart_speed_change(void);
+void usart_angle_change(void);
+
+
+
+
+
+
 
 
 

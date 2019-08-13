@@ -32,3 +32,4 @@
 ..\obj\usart_one.o: ..\SYSTEM\usart\usart.h
 ..\obj\usart_one.o: G:\Program Files\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\usart_one.o: ..\SYSTEM\sys\sys.h
+..\obj\usart_one.o: ..\INCLUDE\pid.h

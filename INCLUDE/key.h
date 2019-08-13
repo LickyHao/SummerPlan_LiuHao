@@ -18,9 +18,9 @@ void key10_Kp_change(void);
 void key11_Ki_change(void);
 void key12_Kd_change(void);
 void key13_speed_set(void);
-void key14_angle_set(void);
+//void key14_angle_set(void);
 void key15_decimal_point(void);
-
+void key14_usart_pid_speed_angle_change(void);
 
 
 

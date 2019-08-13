@@ -1,5 +1,5 @@
 Dependencies for Project 'Template', Target 'Template': (DO NOT MODIFY !)
-F (.\main.c)(0x5D522A3F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5D528447)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
@@ -36,8 +36,8 @@ I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (..\INCLUDE\encoder_tim5.h)(0x5D40F569)
 I (..\INCLUDE\base_tim6.h)(0x5D45683C)
-I (..\INCLUDE\pid.h)(0x5D4571EB)
-I (..\INCLUDE\key.h)(0x5D44F722)
+I (..\INCLUDE\pid.h)(0x5D5270C4)
+I (..\INCLUDE\key.h)(0x5D527A38)
 I (..\INCLUDE\exti.h)(0x5D42F3A7)
 I (..\INCLUDE\lcd.h)(0x5D45622C)
 I (..\INCLUDE\usart_one.h)(0x5D5233CA)
@@ -958,10 +958,10 @@ I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\SYSTEM\sys\sys.h)(0x550F951B)
 I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
-I (..\INCLUDE\pid.h)(0x5D4571EB)
+I (..\INCLUDE\pid.h)(0x5D5270C4)
 I (..\INCLUDE\lcd.h)(0x5D45622C)
 I (..\INCLUDE\usart_one.h)(0x5D5233CA)
-F (..\SOURCE\pid.c)(0x5D522F20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
+F (..\SOURCE\pid.c)(0x5D527CC6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
@@ -990,16 +990,16 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
-I (..\INCLUDE\pid.h)(0x5D4571EB)
+I (..\INCLUDE\pid.h)(0x5D5270C4)
 I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (..\SYSTEM\sys\sys.h)(0x550F951B)
-I (..\INCLUDE\key.h)(0x5D44F722)
+I (..\INCLUDE\key.h)(0x5D527A38)
 I (..\INCLUDE\lcd.h)(0x5D45622C)
 I (..\INCLUDE\usart_one.h)(0x5D5233CA)
-F (..\SOURCE\key.c)(0x5D458467)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
-I (..\INCLUDE\key.h)(0x5D44F722)
-I (..\INCLUDE\pid.h)(0x5D4571EB)
+F (..\SOURCE\key.c)(0x5D527A6C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
+I (..\INCLUDE\key.h)(0x5D527A38)
+I (..\INCLUDE\pid.h)(0x5D5270C4)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
@@ -1029,7 +1029,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\INCLUDE\lcd.h)(0x5D45622C)
-F (..\SOURCE\exti.c)(0x5D4503DB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\exti.o --omf_browse ..\obj\exti.crf --depend ..\obj\exti.d)
+F (..\SOURCE\exti.c)(0x5D527A13)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\exti.o --omf_browse ..\obj\exti.crf --depend ..\obj\exti.d)
 I (..\INCLUDE\exti.h)(0x5D42F3A7)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
@@ -1061,7 +1061,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\SYSTEM\delay\delay.h)(0x555AC82B)
 I (..\SYSTEM\sys\sys.h)(0x550F951B)
-I (..\INCLUDE\key.h)(0x5D44F722)
+I (..\INCLUDE\key.h)(0x5D527A38)
 F (..\SOURCE\lcd.c)(0x5D4562AD)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\lcd.o --omf_browse ..\obj\lcd.crf --depend ..\obj\lcd.d)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
@@ -1097,7 +1097,7 @@ I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (..\SYSTEM\sys\sys.h)(0x550F951B)
 I (..\SYSTEM\delay\delay.h)(0x555AC82B)
-F (..\SOURCE\usart_one.c)(0x5D5233CA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart_one.o --omf_browse ..\obj\usart_one.crf --depend ..\obj\usart_one.d)
+F (..\SOURCE\usart_one.c)(0x5D5270C4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\INCLUDE-I H:\电器开发部\STM32\工程练习\SummerPlan\motor1\USER\RTE-I "G:\Program Files\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include"-I "G:\Program Files\keil5\ARM\CMSIS\Include"-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10x_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart_one.o --omf_browse ..\obj\usart_one.crf --depend ..\obj\usart_one.d)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
@@ -1130,11 +1130,12 @@ I (..\INCLUDE\usart_one.h)(0x5D5233CA)
 I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (G:\Program Files\keil5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (..\SYSTEM\sys\sys.h)(0x550F951B)
+I (..\INCLUDE\pid.h)(0x5D5270C4)
 F (..\INCLUDE\motor_time1.h)(0x5D452F27)()
 F (..\INCLUDE\encoder_tim5.h)(0x5D40F569)()
 F (..\INCLUDE\base_tim6.h)(0x5D45683C)()
-F (..\INCLUDE\pid.h)(0x5D4571EB)()
-F (..\INCLUDE\key.h)(0x5D44F722)()
+F (..\INCLUDE\pid.h)(0x5D5270C4)()
+F (..\INCLUDE\key.h)(0x5D527A38)()
 F (..\INCLUDE\exti.h)(0x5D42F3A7)()
 F (..\INCLUDE\ascii.h)(0x5D45622C)()
 F (..\INCLUDE\lcd.h)(0x5D45622C)()

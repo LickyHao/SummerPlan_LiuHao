@@ -203,10 +203,37 @@ void lcd_show_really_speed(unsigned short int x)
 
 
 
+void usart_kp_change(void)
+{
+		PidParameterString.Kp=((float)(((int)(USART_RX_BUF[0]-'0'))*100+((int)(USART_RX_BUF[2]-'0'))*10+((int)(USART_RX_BUF[3]-'0'))))/100.0;
+}
 
 
+void usart_ki_change(void)
+{
+		PidParameterString.Ki=((float)(((int)(USART_RX_BUF[0]-'0'))*100+((int)(USART_RX_BUF[2]-'0'))*10+((int)(USART_RX_BUF[3]-'0'))))/100.0;
+}
 
+void usart_kd_change(void)
+{
+		PidParameterString.Kd=((float)(((int)(USART_RX_BUF[0]-'0'))*100+((int)(USART_RX_BUF[2]-'0'))*10+((int)(USART_RX_BUF[3]-'0'))))/100.0;
+}
 
+void usart_speed_change(void)
+{
+	if(USART_RX_BUF[0]=='1')
+	{
+		really_speed_angle=(int)(((int)(USART_RX_BUF[0]-'0'))*100+((int)(USART_RX_BUF[1]-'0'))*10+((int)(USART_RX_BUF[2]-'0')));
+	}else if(USART_RX_BUF[0]!='1')
+	{
+		really_speed_angle=(int)(((int)(USART_RX_BUF[0]-'0'))*10+((int)(USART_RX_BUF[1]-'0')));
+	}
+}
+
+void usart_angle_change(void)
+{
+		
+}
 
 
 

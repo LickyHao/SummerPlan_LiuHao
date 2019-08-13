@@ -1,8 +1,18 @@
 #include"stm32f10x.h"
 #include"usart_one.h"
-#include "usart.h"	 
+#include "usart.h"	
+#include"pid.h"
 
 
+
+
+
+
+unsigned char kp_usart_change_flag;
+unsigned char ki_usart_change_flag;
+unsigned char kd_usart_change_flag;
+unsigned char speed_usart_change_flag;
+unsigned char angle_usart_change_flag;
 
 void usart1_send_string(unsigned char *buf,unsigned int len)
 {
@@ -21,13 +31,43 @@ void usart_order_execute(void)
 {
 	if(USART_RX_STA&0x8000)
 	{
-				//len=USART_RX_STA&0x3fff;//得到此次接收到的数据长度
-			if(USART_RX_BUF[0]=='p');
-			if(USART_RX_BUF[0]=='i');
-			if(USART_RX_BUF[0]=='d');
-			if(USART_RX_BUF[0]=='s');
-			if(USART_RX_BUF[0]=='a');
-			USART_RX_STA=0;
+		if(kp_usart_change_flag==1)
+		{
+			usart_kp_change();
+		}
+		
+		if(ki_usart_change_flag==1)
+		{
+			usart_ki_change();
+		}
+		
+		if(kd_usart_change_flag==1)
+		{
+			usart_kd_change();
+		}
+		
+		if(speed_usart_change_flag==1)
+		{
+			usart_speed_change();
+		}
+		
+		if(angle_usart_change_flag==1)
+		{
+			
+			
+			
+		usart_angle_change();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		USART_RX_STA=0;
 	}
 }
 

@@ -36,6 +36,7 @@ int main(void)
 	LCD_Fill(0,0,319,479,WHITE);
 	while(1)
 	{
+		usart_order_execute();
 		lcd_show_PID();
 		//usart1_send_string(a,10);
 		lcd_show_Speed_angle();

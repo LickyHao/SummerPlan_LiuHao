@@ -3,6 +3,9 @@
 #include"stm32f10x.h"
 #include "lcd.h"
 
+
+
+
 unsigned int numbeer_acccumulation=0;
 unsigned char Kp_flag=0;
 unsigned char Ki_flag=0;
@@ -19,6 +22,15 @@ unsigned char wait_change_String[20]="Waiting...";
 unsigned char clan_waiting_lcd[500]="                                                                ";
 unsigned int Digit=0;
 unsigned char point_lcd_show_String[3]=".";
+
+
+extern unsigned char kp_usart_change_flag;
+extern unsigned char ki_usart_change_flag;
+extern unsigned char kd_usart_change_flag;
+extern unsigned char speed_usart_change_flag;
+extern unsigned char angle_usart_change_flag;
+
+
 
 
 void key16_init(void)
@@ -177,9 +189,16 @@ void key9_number_nine(void)
 
 void key10_Kp_change(void)
 {
-	if(Kp_flag==0)Kp_flag=1;
-	else if(Kp_flag==1)Kp_flag=0;
-	if(Kp_flag==0&&Ki_flag==0&&Kd_flag==0)
+	if(Kp_flag==0)
+	{
+		Kp_flag=1;
+		//kp_usart_change_flag=1;
+	}else if(Kp_flag==1)
+	{
+		//kp_usart_change_flag=0;
+		Kp_flag=0;
+	}
+		if(Kp_flag==0&&Ki_flag==0&&Kd_flag==0)
 	{
 		pid_result=(float)numbeer_acccumulation;
 		for(point_digit=point_sunm;point_digit>0;point_digit--)
@@ -205,8 +224,20 @@ void key10_Kp_change(void)
 
 void key11_Ki_change(void)
 {
-	if(Ki_flag==0)Ki_flag=1;
-	else if(Ki_flag==1)Ki_flag=0;
+	if(Ki_flag==0)
+	{	
+	
+		Ki_flag=1;
+	  //ki_usart_change_flag=1;
+	
+	}else if(Ki_flag==1)
+	{
+		//ki_usart_change_flag=0;
+		Ki_flag=0;
+	}
+	
+	
+	
 	if(Kp_flag==0&&Ki_flag==0&&Kd_flag==0)
 	{
 		pid_result=(float)numbeer_acccumulation;
@@ -233,8 +264,15 @@ void key11_Ki_change(void)
 
 void key12_Kd_change(void)
 {
-	if(Kd_flag==0)Kd_flag=1;
-	else if(Kd_flag==1)Kd_flag=0;
+	if(Kd_flag==0)
+	{
+		//kd_usart_change_flag=1;
+		Kd_flag=1;
+	}else if(Kd_flag==1)
+	{
+		Kd_flag=0;
+		//kd_usart_change_flag=0;
+	}
 	if(Kp_flag==0&&Ki_flag==0&&Kd_flag==0)
 	{
 		pid_result=(float)numbeer_acccumulation;
@@ -261,9 +299,17 @@ void key12_Kd_change(void)
 
 void key13_speed_set(void)
 {
-	if(speed_flag==0)speed_flag=1;
-	else if(speed_flag==1)speed_flag=0;
-	if(speed_flag==0&&angle_flag==0)
+	if(speed_flag==0)
+	{
+		//speed_usart_change_flag=1;
+		speed_flag=1;
+	}else if(speed_flag==1)
+	{
+		//speed_usart_change_flag=0;
+		speed_flag=0;
+	}
+	//if(speed_flag==0&&angle_flag==0)
+	if(speed_flag==0)
 	{
 		speed_angle_change_value_number=numbeer_acccumulation;
 		Speed_Change();
@@ -282,10 +328,42 @@ void key13_speed_set(void)
 	}
 }
 
-void key14_angle_set(void)
+void key14_usart_pid_speed_angle_change(void)
 {
-	if(angle_flag==0)angle_flag=1;
-	else if(angle_flag==1)angle_flag=0;
+	
+	static unsigned char i=0;
+	unsigned char lcd_show_usart_kp_change_string[30]="kp change            ";
+	unsigned char lcd_show_usart_ki_change_string[30]="ki change            ";
+	unsigned char lcd_show_usart_kd_change_string[30]="kd change            ";
+	unsigned char lcd_show_usart_speed_change_string[30]="speed change      ";
+	unsigned char lcd_show_usart_angle_change_string[30]="angle change      ";
+	unsigned char lcd_usart_clean_show[30]="                     ";
+	switch(i)
+	{
+		case 0:kp_usart_change_flag=0;ki_usart_change_flag=0;kd_usart_change_flag=0;speed_usart_change_flag=0;angle_usart_change_flag=0;LCD_ShowString(37,410,100,15,16,lcd_usart_clean_show);i++;break;
+		case 1:kp_usart_change_flag=1;ki_usart_change_flag=0;kd_usart_change_flag=0;speed_usart_change_flag=0;angle_usart_change_flag=0;i++;LCD_ShowString(37,410,100,15,16,lcd_show_usart_kp_change_string);break;
+		case 2:kp_usart_change_flag=0;ki_usart_change_flag=1;kd_usart_change_flag=0;speed_usart_change_flag=0;angle_usart_change_flag=0;i++;LCD_ShowString(37,410,100,15,16,lcd_show_usart_ki_change_string);break;
+		case 3:kp_usart_change_flag=0;ki_usart_change_flag=0;kd_usart_change_flag=1;speed_usart_change_flag=0;angle_usart_change_flag=0;i++;LCD_ShowString(37,410,100,15,16,lcd_show_usart_kd_change_string);break;
+		case 4:kp_usart_change_flag=0;ki_usart_change_flag=0;kd_usart_change_flag=0;speed_usart_change_flag=1;angle_usart_change_flag=0;i++;LCD_ShowString(37,410,100,15,16,lcd_show_usart_speed_change_string);break;
+		case 5:kp_usart_change_flag=0;ki_usart_change_flag=0;kd_usart_change_flag=0;speed_usart_change_flag=0;angle_usart_change_flag=1;i=0;LCD_ShowString(37,410,100,15,16,lcd_show_usart_angle_change_string);break;
+		default:break;
+	}
+		
+}
+
+
+/*void key14_angle_set(void)
+{
+	if(angle_flag==0)
+	{
+		//angle_usart_change_flag=1;
+		angle_flag=1;
+	}else if(angle_flag==1)
+	{
+		//angle_usart_change_flag=0;
+		angle_flag=0;
+	}
+	
 	if(speed_flag==0&&angle_flag==0)
 	{
 		speed_angle_change_value_number=numbeer_acccumulation;
@@ -304,7 +382,7 @@ void key14_angle_set(void)
 		LCD_ShowString(55,320,300,15,16,clan_waiting_lcd);
 	}
 	
-}
+}*/
 
 
 void key15_decimal_point(void)
