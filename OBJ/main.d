@@ -40,3 +40,5 @@
 ..\obj\main.o: ..\INCLUDE\exti.h
 ..\obj\main.o: ..\INCLUDE\lcd.h
 ..\obj\main.o: ..\INCLUDE\usart_one.h
+..\obj\main.o: ..\INCLUDE\iic.h
+..\obj\main.o: ..\INCLUDE\eeprom.h

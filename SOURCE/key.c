@@ -207,6 +207,7 @@ void key10_Kp_change(void)
 		}
 		pid_change_value_numbeer=pid_result;
 		KP_Change();
+		kp_eeprom_write();
 		numbeer_acccumulation=0;
 		point_sunm=0;
 		Digit=0;
@@ -247,6 +248,7 @@ void key11_Ki_change(void)
 		}
 		pid_change_value_numbeer=pid_result;
 		KI_Change();
+		ki_eeprom_write();
 		numbeer_acccumulation=0;
 		point_sunm=0;
 		Digit=0;
@@ -313,6 +315,10 @@ void key13_speed_set(void)
 	{
 		speed_angle_change_value_number=numbeer_acccumulation;
 		Speed_Change();
+		kd_eeprom_write();
+		
+		
+		speed_eeprom_write();
 		numbeer_acccumulation=0;
 		point_sunm=0;
 		Digit=0;

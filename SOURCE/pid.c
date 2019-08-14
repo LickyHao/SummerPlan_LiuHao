@@ -4,7 +4,7 @@
 #include"key.h"
 #include"lcd.h"
 #include"usart_one.h"
-
+#include"eeprom.h"
 
 
 float pid_change_value_numbeer;
@@ -33,9 +33,18 @@ PidParameterDef PidParameterString;
 
 void PID_init(void)
 {
-	PidParameterString.Kp=0.31;
-	PidParameterString.Ki=0.35;
-	PidParameterString.Kd=0.2;
+	unsigned char kp_eeprom_read[6]; 
+	unsigned char ki_eeprom_read[6]; 
+	unsigned char kd_eeprom_read[6]; 
+	
+	Read_String(0x00,kp_eeprom_read,4);
+	Read_String(0x05,ki_eeprom_read,4);
+	Read_String(0x0A,kd_eeprom_read,4);
+	
+	
+	PidParameterString.Kp=((float)(((int)(kp_eeprom_read[0]-'0'))*100+((int)(kp_eeprom_read[2]-'0'))*10+((int)(kp_eeprom_read[3]-'0'))))/100.0;
+	PidParameterString.Ki=((float)(((int)(ki_eeprom_read[0]-'0'))*100+((int)(ki_eeprom_read[2]-'0'))*10+((int)(ki_eeprom_read[3]-'0'))))/100.0;;
+	PidParameterString.Kd=((float)(((int)(kd_eeprom_read[0]-'0'))*100+((int)(kd_eeprom_read[2]-'0'))*10+((int)(kd_eeprom_read[3]-'0'))))/100.0;;
 	PidParameterString.SetPoint=0;
 	PidParameterString.ErrorSum=0;
 	PidParameterString.LastError=0; 
@@ -232,21 +241,65 @@ void usart_speed_change(void)
 
 void usart_angle_change(void)
 {
-		
+	
 }
 
 
 
+void kp_eeprom_write(void)
+{
+	unsigned char kp_string_eeprom[6];
+	
+	kp_string_eeprom[0]=(int)PidParameterString.Kp+'0';
+	kp_string_eeprom[1]='.';
+	kp_string_eeprom[2]=((int)(PidParameterString.Kp*10))%10+'0';
+	kp_string_eeprom[3]=((int)(PidParameterString.Kp*100))%10+'0';
+	Writ_String(0x00,kp_string_eeprom,4);
+	
+	
+}
 
 
+void ki_eeprom_write(void)
+{
+	unsigned char ki_string_eeprom[6];
+	
+	ki_string_eeprom[0]=(int)PidParameterString.Ki+'0';
+	ki_string_eeprom[1]='.';
+	ki_string_eeprom[2]=((int)(PidParameterString.Ki*10))%10+'0';
+	ki_string_eeprom[3]=((int)(PidParameterString.Ki*100))%10+'0';
+	Writ_String(0x05,ki_string_eeprom,4);
+	
+	
+}
 
 
+void kd_eeprom_write(void)
+{
+		unsigned char kd_string_eeprom[6];
+	
+	kd_string_eeprom[0]=(int)PidParameterString.Kd+'0';
+	kd_string_eeprom[1]='.';
+	kd_string_eeprom[2]=((int)(PidParameterString.Kd*10))%10+'0';
+	kd_string_eeprom[3]=((int)(PidParameterString.Kd*100))%10+'0';
+	Writ_String(0x0A,kd_string_eeprom,4);
+	
+	
+}
 
 
+void speed_eeprom_write(void)
+{
+	if((really_speed_angle/100)>=0)
+	{
+	
+		write_len_byte(0x0F,(unsigned int)really_speed_angle,3);
 
-
-
-
+	}else if((really_speed_angle/100)<0)
+	{
+		write_len_byte(0x0F,(unsigned int)really_speed_angle,2);
+	}
+}
 
 
 

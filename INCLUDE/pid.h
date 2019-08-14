@@ -18,10 +18,10 @@ void usart_ki_change(void);
 void usart_kd_change(void);
 void usart_speed_change(void);
 void usart_angle_change(void);
-
-
-
-
+void kp_eeprom_write(void);
+void ki_eeprom_write(void);
+void kd_eeprom_write(void);
+void speed_eeprom_write(void);
 
 
 

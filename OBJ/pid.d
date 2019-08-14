@@ -35,3 +35,4 @@
 ..\obj\pid.o: ..\INCLUDE\key.h
 ..\obj\pid.o: ..\INCLUDE\lcd.h
 ..\obj\pid.o: ..\INCLUDE\usart_one.h
+..\obj\pid.o: ..\INCLUDE\eeprom.h

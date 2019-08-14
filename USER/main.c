@@ -10,6 +10,8 @@
 #include"exti.h"
 #include"lcd.h"
 #include"usart_one.h"
+#include"iic.h"
+#include"eeprom.h"
 
 
 //int RealitySpeed;
@@ -22,6 +24,7 @@ int main(void)
 {
 	uart_init(9600);
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	iic_GPIO_init();
 	delay_init();
 	time1_motor_init();
 	encoder_init();
@@ -29,11 +32,13 @@ int main(void)
 	PID_init();
 	tim4_motor_init();
 	exti_key16_init();
+	//iic_GPIO_init();
 	key16_init();
 	uart_init(9600);
 	TFTLCD_Init();
 	//really_speed_angle=0;
 	LCD_Fill(0,0,319,479,WHITE);
+	really_speed_angle=(int)read_len_byte(0x0F,3);
 	while(1)
 	{
 		usart_order_execute();

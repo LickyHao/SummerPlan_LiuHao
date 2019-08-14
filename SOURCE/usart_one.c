@@ -34,21 +34,25 @@ void usart_order_execute(void)
 		if(kp_usart_change_flag==1)
 		{
 			usart_kp_change();
+			kp_eeprom_write();
 		}
 		
 		if(ki_usart_change_flag==1)
 		{
 			usart_ki_change();
+			ki_eeprom_write();
 		}
 		
 		if(kd_usart_change_flag==1)
 		{
 			usart_kd_change();
+			kd_eeprom_write();
 		}
 		
 		if(speed_usart_change_flag==1)
 		{
 			usart_speed_change();
+			speed_eeprom_write();
 		}
 		
 		if(angle_usart_change_flag==1)
