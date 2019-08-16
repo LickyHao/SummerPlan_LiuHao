@@ -11,6 +11,7 @@ int encoder_number;  //定义编码器计数器变量
 extern int RealitySpeed;  
 extern float really_speed_numbr;    //定义实际速度变量
 float speed_show_lcd;  //定义触摸屏速度显示变量
+extern float really_speed;
 
 
 unsigned char Speed_String[20]="speed:";  //定义触摸屏速度显示字符串
@@ -55,7 +56,8 @@ void TIM6_IRQHandler(void)  //定时器6中断函数
 		if(time_1s_flag>=1000) //当达到1秒
 		{
 			 time_1s_flag=0; //清零标志位
-			really_speed_numbr=(float)encoder_number/334.0;  //计算实际速度
+			really_speed_numbr=(float)encoder_number/334.0;  //计算实际速度,用于显示
+			really_speed=(float)encoder_number/334.0;  //计算实际速度,用于调整PID
 			 speed_show_lcd=(float)encoder_number/334;  //计算实际速度，用于在触摸屏上显示
 			 out_scan();  //上位机显示函数
 			 encoder_number=0;  //编码器计数器清零

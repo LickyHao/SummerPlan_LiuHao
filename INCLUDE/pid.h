@@ -2,7 +2,6 @@
 #define _PID_H_
 
 
-float pid_rectify(float SetSpeed);
 void PID_init(void);
 void out_scan(void);
 void KP_Change(void);
@@ -22,7 +21,7 @@ void kp_eeprom_write(void);
 void ki_eeprom_write(void);
 void kd_eeprom_write(void);
 void speed_eeprom_write(void);
-
+float pid_algorithm(float SetSpeed,float ReallySpeed) ;
 
 
 

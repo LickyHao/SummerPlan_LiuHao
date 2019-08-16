@@ -51,21 +51,25 @@ void PID_init(void)  //初始化PID参数
 	PidParameterString.ActualSpeed=0; //初始化实际速度
 }
 
-float pid_rectify(float SetSpeed)  //pid算法函数
+
+
+
+float pid_algorithm(float SetSpeed,float ReallySpeed)  //PID算法
 {
 	float DifferentialError; //定义微分变量
-	float Error;  //定义误差
-	float ChangePid;  //定义PID结果变量
+	float Error;  //定义误差值
+	float ChangePid; //定义PID结果
 	
-	PidParameterString.SetPoint=SetSpeed;  //赋值设定速度 
+	
+	PidParameterString.SetPoint=SetSpeed;    //赋值设定速度
 	lcd_show_set_speed((unsigned short int) PidParameterString.SetPoint); //在触摸屏上显示设定速度
+	PidParameterString.ActualSpeed=ReallySpeed; //赋值实际速度
 	Error=PidParameterString.SetPoint-PidParameterString.ActualSpeed; //计算误差
-	DifferentialError=Error-PidParameterString.LastError;//计算误差微分变量
-	PidParameterString.ErrorSum=PidParameterString.ErrorSum+Error; //计算误差值之和
-	ChangePid=PidParameterString.Kp*Error+PidParameterString.Ki*PidParameterString.ErrorSum+PidParameterString.Kd*DifferentialError; //计算PID结果
-	PidParameterString.LastError=Error; //重新赋值微分变量
-	PidParameterString.ActualSpeed=ChangePid; //重新赋值实际参数
-	return (ChangePid/118.0*(900.0-237.0)+250.0); //返回PID输出值
+	DifferentialError=Error-PidParameterString.LastError;  //计算微分值
+	PidParameterString.ErrorSum=PidParameterString.ErrorSum+Error;  //计算积分值
+	ChangePid=PidParameterString.Kp*Error+PidParameterString.Ki*PidParameterString.ErrorSum+PidParameterString.Kd*DifferentialError;  //计算PID结果
+	PidParameterString.LastError=Error; //保存误差
+	return ChangePid;  //返回PID结果
 }
 
 void out_scan(void)    //串口发送函数，用于向上位机发送速,PID参数

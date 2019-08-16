@@ -16,7 +16,7 @@
 
 int count; //设置pid算法返回值变量，用于输出PWM
 int really_speed_angle; //全局变量，用于设置指定速度
-
+float really_speed;
 
 int main(void)
 {
@@ -40,7 +40,8 @@ int main(void)
 		lcd_show_PID(); //PID参数显示函数，用于在触摸屏上显示PID参数
 		lcd_show_Speed_angle(); //触摸屏速度角度显示函数
 
-		count=(int)pid_rectify(really_speed_angle); //调用PID算法，返回值为PWM占空比
+		
+		count=(int)pid_algorithm(really_speed_angle,really_speed);//调用PID算法，返回值为PWM占空比
 		TIM_SetCompare1(TIM4,count); //调整TIM4的占空比，用于输出指定速度
 
 
