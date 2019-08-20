@@ -22,7 +22,7 @@ void encoder_init(void) //编码器初始化函数
 	TIM_TimeBaseInitTypeString.TIM_CounterMode=TIM_CounterMode_Up; //向上计数模式
 	TIM_TimeBaseInitTypeString.TIM_Period=899;//设置自动重装载值
 	TIM_TimeBaseInitTypeString.TIM_Prescaler=0; //设置预分频系数
-	TIM_TimeBaseInit(TIM1,&TIM_TimeBaseInitTypeString);//初始化定时器4
+	TIM_TimeBaseInit(TIM5,&TIM_TimeBaseInitTypeString);//初始化定时器5
 
 	TIM_ICInitTypeString.TIM_Channel=TIM_Channel_1; //设置通道1
 	TIM_ICInitTypeString.TIM_ICFilter=0x00;//滤波器

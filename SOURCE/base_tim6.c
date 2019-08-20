@@ -11,7 +11,7 @@ int encoder_number;  //定义编码器计数器变量
 extern int RealitySpeed;  
 extern float really_speed_numbr;    //定义实际速度变量
 float speed_show_lcd;  //定义触摸屏速度显示变量
-extern float really_speed;
+extern float really_speed;  //全集变量，用于计算pid的占空比
 
 
 unsigned char Speed_String[20]="speed:";  //定义触摸屏速度显示字符串
@@ -86,7 +86,7 @@ void lcd_show_Speed_angle(void)  //触摸屏速度角度显示函数
 	
 	
 	
-	LCD_ShowString(0,68,100,15,16,angle_String);
+	LCD_ShowString(0,68,100,15,16,angle_String);  //在相应位置显示角度
 	
 	
 	

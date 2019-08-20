@@ -16,7 +16,7 @@
 
 int count; //设置pid算法返回值变量，用于输出PWM
 int really_speed_angle; //全局变量，用于设置指定速度
-float really_speed;
+float really_speed;  //全集变量，用于计算pid的占空比
 
 int main(void)
 {
@@ -25,7 +25,6 @@ int main(void)
 	iic_GPIO_init(); //初始化IIC的GPIO口
 	delay_init();  //初始化延时函数
 	TFTLCD_Init(); //初始化触摸屏
-	time1_motor_init(); //初始化定时器1
 	encoder_init(); //初始化编码器定时器5
 	tim6_base_init(); //初始化定时器6
 	PID_init(); //初始化PID参数
