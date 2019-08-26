@@ -341,7 +341,7 @@ void key14_usart_pid_speed_angle_change(void) //功能按键，用来提醒哪一个变量将被
 	unsigned char lcd_show_usart_kd_change_string[30]="kd change            ";  //定义串口Kd改变标志位字符型数组
 	unsigned char lcd_show_usart_speed_change_string[30]="speed change      ";  //定义串口速度改变标志位字符型数组
 	unsigned char lcd_show_usart_angle_change_string[30]="angle change      ";  //定义串口角度改变标志位字符型数组
-	unsigned char lcd_usart_clean_show[30]="                     ";
+	unsigned char lcd_usart_clean_show[30]="                     ";//定义串口清除提示字符型数组
 	switch(i) //当检测到按键按下时，启动不同的数据改变标志位，并在触摸屏上显示，用来提醒
 	{
 		case 0:kp_usart_change_flag=0;ki_usart_change_flag=0;kd_usart_change_flag=0;speed_usart_change_flag=0;angle_usart_change_flag=0;LCD_ShowString(37,410,100,15,16,lcd_usart_clean_show);i++;break;  //清零标志位

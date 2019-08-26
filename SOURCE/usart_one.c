@@ -27,7 +27,7 @@ void usart1_send_string(unsigned char *buf,unsigned int len) //´®¿Ú×Ö·û´®·¢ËÍº¯Ê
 
 
 
-void usart_order_execute(void) //³öÄÉ¿Ú½ÓÊÕº¯Êı
+void usart_order_execute(void) //´®¿Ú½ÓÊÕº¯Êı
 {
 	if(USART_RX_STA&0x8000)  //¼ì²âÊÇ·ñ½ÓÊÜÍê³É
 	{

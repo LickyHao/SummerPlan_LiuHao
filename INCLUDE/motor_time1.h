@@ -3,7 +3,7 @@
 
 
 
-void tim4_motor_init(void);
+void tim4_motor_init(void);//定时器4初始化函数，用于驱动电机
 
 
 

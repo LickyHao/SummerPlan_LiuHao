@@ -26,7 +26,7 @@ void SDA_IIC_out(void) //PB7输出函数
 	GPIO_Init(GPIOB,&GPIO_InitTypeString);	//初始化GPIO
 }
 
-void SDA_IIC_in(void)
+void SDA_IIC_in(void) //PB7输入函数
 {
 	GPIO_InitTypeDef GPIO_InitTypeString;//GPIO初始化结构体变量
 	

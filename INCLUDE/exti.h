@@ -5,7 +5,7 @@
 
 
 
-void exti_key16_init(void);
+void exti_key16_init(void);//外部中断初始化函数，用于配合按键使用
 
 
 

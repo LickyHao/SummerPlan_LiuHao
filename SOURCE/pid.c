@@ -7,6 +7,9 @@
 #include"eeprom.h"
 
 
+
+
+
 float pid_change_value_numbeer;      //声明按键改变的PID参数
 unsigned int speed_angle_change_value_number;  //声明按键改变的速度变量
 extern int really_speed_angle;  //全局变量，用于设置指定速度
@@ -88,7 +91,6 @@ void out_scan(void)    //串口发送函数，用于向上位机发送速,PID参数
 	speed_PidParameter_usart1_show_string[9]='.';
 	speed_PidParameter_usart1_show_string[10]=((int)(really_speed_numbr*10))%10+'0';
 	speed_PidParameter_usart1_show_string[11]=((int)(really_speed_numbr*100))%10+'0';
-	
 	speed_PidParameter_usart1_show_string[12]=' ';
 	speed_PidParameter_usart1_show_string[13]=' ';
 	speed_PidParameter_usart1_show_string[14]='k';
@@ -116,10 +118,7 @@ void out_scan(void)    //串口发送函数，用于向上位机发送速,PID参数
   speed_PidParameter_usart1_show_string[36]=((int)(PidParameterString.Kd*100))%10+'0';
 	speed_PidParameter_usart1_show_string[37]='\n';
 	speed_PidParameter_usart1_show_string[38]='\r';
-	usart1_send_string(speed_PidParameter_usart1_show_string,39);  //想上位机发送
-
-	
-
+	usart1_send_string(speed_PidParameter_usart1_show_string,39);  //向上位机发送，显示速度和PID参数
 }
 
 
@@ -175,8 +174,6 @@ void lcd_show_PID(void)  //PID参数显示函数，用于在触摸屏上显示PID参数
 	 Kd_String[6]=(int)((PidParameterString.Kd-(int)PidParameterString.Kd)*100)%10+'0';
 	 Kd_String[7]='\0';
 	 LCD_ShowString(0,34,100,15,16,Kd_String);  //将PID参数中的Kd显示在触摸屏指定位置上
-	
-	
 }
 
 
@@ -257,8 +254,6 @@ void kp_eeprom_write(void)  //pid参数保存函数，将Kp值保存到eeprom中
 	kp_string_eeprom[2]=((int)(PidParameterString.Kp*10))%10+'0';
 	kp_string_eeprom[3]=((int)(PidParameterString.Kp*100))%10+'0';
 	Writ_String(0x00,kp_string_eeprom,4);  //将浮点型的Kp保存到eeprom的指定位置
-	
-	
 }
 
 
@@ -271,30 +266,25 @@ void ki_eeprom_write(void)  //pid参数保存函数，将Ki值保存到eeprom中
 	ki_string_eeprom[2]=((int)(PidParameterString.Ki*10))%10+'0';
 	ki_string_eeprom[3]=((int)(PidParameterString.Ki*100))%10+'0';
 	Writ_String(0x05,ki_string_eeprom,4);  //将浮点型的Ki保存到eeprom的指定位置
-	
-	
 }
 
 
 void kd_eeprom_write(void)  //pid参数保存函数，将Kd值保存到eeprom中
 {
-		unsigned char kd_string_eeprom[6];  //定义PID参数中的Kd参数字符型保存数组，将浮点型变量Kd转化成字符型保存到eeprom
+	unsigned char kd_string_eeprom[6];  //定义PID参数中的Kd参数字符型保存数组，将浮点型变量Kd转化成字符型保存到eeprom
 	
 	kd_string_eeprom[0]=(int)PidParameterString.Kd+'0';
 	kd_string_eeprom[1]='.';
 	kd_string_eeprom[2]=((int)(PidParameterString.Kd*10))%10+'0';
 	kd_string_eeprom[3]=((int)(PidParameterString.Kd*100))%10+'0';
 	Writ_String(0x0A,kd_string_eeprom,4);  //将浮点型的Kd保存到eeprom的指定位置
-	
-	
 }
 
 
 void speed_eeprom_write(void)  //设定速度保存函数，将设定速度保存到eeprom中
 {
-	if((really_speed_angle/100)>=0)
+	if((really_speed_angle/100)>=0)  //判断速度是三位数还是两位数，如果是三位数，保存三个字节，反之，保存两个字节
 	{
-	
 		write_len_byte(0x0F,(unsigned int)really_speed_angle,3);
 
 	}else if((really_speed_angle/100)<0)
